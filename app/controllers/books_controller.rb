@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-
   def show
     @booka = Book.new
     @book = Book.find(params[:id])
