@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  get "search" => "searches#search", as: "search"
-  get 'relationships/followings'
-  get 'relationships/followers'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root to: "homes#top"
   get "home/about" => "homes#about"
   devise_for :users
@@ -19,5 +15,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
+  get "search" => "searches#search", as: "search"
+  resources :chats, only: [:show, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
